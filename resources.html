@@ -1,9 +1,515 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>الموارد والمساعدات | نجاة</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body>
-<nav class="nav" id="nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><span class="logo-wordmark">نجاة</span></a><div class="nav-links"><a href="plan.html" class="nav-link">خطة الـ30 يوم</a><a href="debts.html" class="nav-link">إدارة الديون</a><a href="blog/index.html" class="nav-link">المدونة</a><a href="resources.html" class="nav-link">الموارد</a><a href="plan.html" class="btn btn-primary btn-sm">ابدأ الخطة</a></div><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobileMenu"><a href="plan.html">خطة الـ30 يوم</a><a href="blog/index.html">المدونة</a></div></nav>
-<div class="page-hero"><span class="eyebrow">نجاة</span><h1>الموارد والمساعدات</h1><p>جهات دعم حقيقية في الدول العربية</p></div>
-<section class="section"><div class="container" style="text-align:center; padding:40px 24px;">
-<p style="font-size:1rem; color:var(--muted); max-width:500px; margin:0 auto 24px; line-height:1.8;">هذه الصفحة قيد الإعداد وستُطلق قريباً بمحتوى كامل ومفصّل.</p>
-<a href="plan.html" class="btn btn-primary">ابدأ خطة الـ30 يوم الآن</a>
-</div></section>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><div class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><span class="logo-wordmark">نجاة</span></div><p>دليل عربي عملي لإدارة الأزمات المالية</p></div><div class="footer-col"><h4>الخطة</h4><a href="plan.html">خطة الـ30 يوم</a><a href="debts.html">إدارة الديون</a></div><div class="footer-col"><h4>المدونة</h4><a href="blog/index.html">كل المقالات</a></div><div class="footer-col"><h4>الموارد</h4><a href="resources.html">مساعدات ودعم</a></div></div><div class="footer-bottom"><span>© 2024 نجاة.</span></div></footer>
-<script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الموارد والمساعدات | نجاة — دليل الأزمة المالية</title>
+  <meta name="description" content="قائمة موارد دعم حقيقية لمن يمر بأزمة مالية في الدول العربية — جهات حكومية، خيرية، وقانونية. مع روابط مباشرة وتفاصيل عملية.">
+  <meta name="keywords" content="مساعدات مالية عربية, دعم اجتماعي, مساعدات فقدان العمل, جهات خيرية">
+  <link rel="canonical" href="https://najat.github.io/resources.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .country-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+    .country-tab {
+      padding: 8px 18px; border-radius: 20px; font-size: 0.84rem; font-weight: 600;
+      cursor: pointer; border: 1.5px solid var(--border-m); background: var(--bg2);
+      color: var(--muted); transition: all 0.18s; font-family: var(--font);
+    }
+    .country-tab.active { background: var(--g600); color: #fff; border-color: var(--g600); }
+    .country-tab:hover:not(.active) { border-color: var(--g400); color: var(--g600); }
+
+    .country-panel { display: none; }
+    .country-panel.active { display: block; }
+
+    .resource-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-bottom: 32px; }
+    .resource-card {
+      background: var(--bg); border: 1px solid var(--border-m); border-radius: var(--rl);
+      padding: 20px; transition: all 0.2s;
+    }
+    .resource-card:hover { border-color: var(--g200); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    .resource-type { font-size: 0.68rem; font-weight: 700; padding: 2px 9px; border-radius: 10px; display: inline-block; margin-bottom: 10px; }
+    .type-gov { background: var(--info-light); color: var(--info); }
+    .type-ngo { background: var(--g50); color: var(--g800); }
+    .type-legal { background: var(--warn-light); color: var(--warn); }
+    .type-intl { background: var(--danger-light); color: var(--danger); }
+    .resource-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+    .resource-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; margin-bottom: 12px; }
+    .resource-info { display: flex; flex-direction: column; gap: 5px; }
+    .r-info-item { font-size: 0.78rem; color: var(--muted); display: flex; align-items: flex-start; gap: 7px; }
+    .r-info-item strong { color: var(--text); font-weight: 600; flex-shrink: 0; }
+
+    .category-label { font-size: 0.8rem; font-weight: 700; color: var(--g600); text-transform: uppercase; letter-spacing: 1px; margin: 28px 0 12px; display: block; }
+
+    .general-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .gen-card {
+      background: var(--bg2); border: 1px solid var(--border-m); border-radius: var(--rl);
+      padding: 18px; text-align: center;
+    }
+    .gen-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .gen-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+    .gen-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+    .alert-box {
+      background: var(--warn-light); border: 1px solid rgba(133,79,11,0.2);
+      border-radius: var(--r); padding: 14px 18px; margin-bottom: 28px;
+      font-size: 0.88rem; color: var(--warn); line-height: 1.7;
+    }
+
+    @media (max-width:640px) {
+      .resource-grid { grid-template-columns: 1fr; }
+      .general-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div>
+        <span class="logo-wordmark">نجاة</span>
+      </a>
+      <div class="nav-links">
+        <a href="plan.html" class="nav-link">خطة الـ30 يوم</a>
+        <a href="debts.html" class="nav-link">إدارة الديون</a>
+        <a href="emergency-fund.html" class="nav-link">صندوق الطوارئ</a>
+        <a href="blog/index.html" class="nav-link">المدونة</a>
+        <a href="resources.html" class="nav-link active">الموارد</a>
+        <a href="plan.html" class="btn btn-primary btn-sm">ابدأ الخطة</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="plan.html">خطة الـ30 يوم</a>
+      <a href="resources.html">الموارد</a>
+      <a href="blog/index.html">المدونة</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <span class="eyebrow">الموارد والمساعدات</span>
+    <h1>لا تواجه الأزمة وحدك</h1>
+    <p>موارد دعم حقيقية موثوقة — جهات حكومية وخيرية ودولية في الدول العربية والعالم</p>
+  </div>
+
+  <main>
+  <section class="section">
+    <div class="container">
+
+      <div class="alert-box">
+        ⚠️ <strong>تنبيه:</strong> المعلومات أدناه للتوجيه العام. البرامج والأرقام تتغير — تحقق دائماً من الموقع الرسمي للجهة قبل التواصل. إذا لم تجد بلدك أدناه، تواصل مع وزارة الشؤون الاجتماعية أو الجهة الحكومية المعادلة في بلدك مباشرة.
+      </div>
+
+      <!-- COUNTRY TABS -->
+      <div class="country-tabs">
+        <button class="country-tab active" onclick="showCountry('general')">عام (لكل العرب)</button>
+        <button class="country-tab" onclick="showCountry('ksa')">السعودية</button>
+        <button class="country-tab" onclick="showCountry('uae')">الإمارات</button>
+        <button class="country-tab" onclick="showCountry('jordan')">الأردن</button>
+        <button class="country-tab" onclick="showCountry('egypt')">مصر</button>
+        <button class="country-tab" onclick="showCountry('lebanon')">لبنان</button>
+        <button class="country-tab" onclick="showCountry('intl')">الدول الغربية</button>
+      </div>
+
+      <!-- GENERAL -->
+      <div class="country-panel active" id="general">
+        <span class="category-label">🌍 موارد دولية متاحة للجميع</span>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="resource-type type-intl">دولي</span>
+            <h3>المفوضية السامية للأمم المتحدة للاجئين (UNHCR)</h3>
+            <p>دعم للاجئين والنازحين — سكن، غذاء، وثائق، إحالة لخدمات أخرى.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> unhcr.org/ar</div>
+              <div class="r-info-item"><strong>الخط:</strong> يختلف حسب البلد</div>
+              <div class="r-info-item"><strong>للحالات:</strong> اللاجئون والنازحون</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-intl">دولي</span>
+            <h3>برنامج الأغذية العالمي (WFP)</h3>
+            <p>مساعدات غذائية طارئة في مناطق الأزمات — نقدي أو عيني.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> wfp.org/ar</div>
+              <div class="r-info-item"><strong>للحالات:</strong> أزمات غذائية، مناطق عمليات WFP</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-ngo">خيري</span>
+            <h3>مؤسسة الفكر العربي</h3>
+            <p>موارد تعليمية ومهنية لتطوير المهارات وإيجاد فرص عمل — لا مساعدات نقدية مباشرة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> arabthought.org</div>
+              <div class="r-info-item"><strong>للحالات:</strong> البحث عن عمل وتطوير المهارات</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-ngo">رقمي مجاني</span>
+            <h3>Coursera & edX — وصول مجاني</h3>
+            <p>آلاف الدورات المجانية لتطوير المهارات المطلوبة في سوق العمل — برمجة، تصميم، بيانات، أعمال.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> coursera.org / edx.org</div>
+              <div class="r-info-item"><strong>التكلفة:</strong> مجاني للمحتوى، مدفوع للشهادة</div>
+            </div>
+          </div>
+        </div>
+
+        <span class="category-label">💼 فرص عمل عربية مشتركة</span>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="resource-type type-ngo">منصة توظيف</span>
+            <h3>LinkedIn — التواصل المهني</h3>
+            <p>منصة التواصل المهني الأكبر عالمياً. فعّل "Open to Work" وتواصل مع المسؤولين في الشركات التي تريدها مباشرة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> linkedin.com</div>
+              <div class="r-info-item"><strong>النصيحة:</strong> الشبكة أقوى من الطلبات العشوائية</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-ngo">عمل حر</span>
+            <h3>Upwork / Fiverr / Freelancer</h3>
+            <p>منصات العمل الحر الدولية — ترجمة، تصميم، برمجة، كتابة محتوى. بدء دون رأس مال.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>المواقع:</strong> upwork.com / fiverr.com</div>
+              <div class="r-info-item"><strong>النصيحة:</strong> ابدأ بسعر منخفض وابنِ تقييماتك أولاً</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KSA -->
+      <div class="country-panel" id="ksa">
+        <span class="category-label">🇸🇦 المملكة العربية السعودية</span>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="resource-type type-gov">حكومي</span>
+            <h3>هيئة تأمين العمل (العمل والتأمينات الاجتماعية)</h3>
+            <p>تأمين التعطل عن العمل للسعوديين المسجلين في التأمينات الاجتماعية — يُغطي 60% من الراتب الأخير لفترة محددة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> gosi.gov.sa</div>
+              <div class="r-info-item"><strong>الشرط:</strong> مسجل في التأمينات واشتراط مدة خدمة</div>
+              <div class="r-info-item"><strong>التقديم:</strong> إلكتروني عبر الموقع</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-gov">حكومي</span>
+            <h3>برنامج حساب المواطن</h3>
+            <p>دعم مالي دوري للأسر السعودية ذات الدخل المنخفض — يُحوَّل شهرياً مباشرة للحساب البنكي.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> cc.gov.sa</div>
+              <div class="r-info-item"><strong>الشرط:</strong> أسرة سعودية وفق معايير محددة</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-gov">توظيف</span>
+            <h3>منصة طاقات — توظيف السعوديين</h3>
+            <p>منصة وزارة الموارد البشرية لربط الباحثين عن عمل بأصحاب العمل — مع خدمات مجانية للمرشحين.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> taqat.sa</div>
+              <div class="r-info-item"><strong>الخدمة:</strong> بحث عمل وتدريب مهني</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-ngo">خيري</span>
+            <h3>هيئة الهلال الأحمر السعودي / الجمعيات الخيرية</h3>
+            <p>مساعدات غذائية وإيجار طارئ وخدمات اجتماعية عبر الجمعيات الخيرية المحلية المعتمدة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> srca.org.sa</div>
+              <div class="r-info-item"><strong>النصيحة:</strong> ابحث عن الجمعية الخيرية في مدينتك</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UAE -->
+      <div class="country-panel" id="uae">
+        <span class="category-label">🇦🇪 الإمارات العربية المتحدة</span>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="resource-type type-gov">حكومي</span>
+            <h3>نظام تأمين نهاية الخدمة (DIFC / ADGM)</h3>
+            <p>الإماراتيون والمقيمون يحق لهم مكافأة نهاية الخدمة عند انتهاء العمل — تأكد من استلامها كاملة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الجهة:</strong> وزارة الموارد البشرية والتوطين</div>
+              <div class="r-info-item"><strong>الموقع:</strong> mohre.gov.ae</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-gov">توظيف</span>
+            <h3>منصة Nafis — توطين القطاع الخاص</h3>
+            <p>برنامج دعم توظيف الإماراتيين في القطاع الخاص — مع دعم مالي للشركات التي توظفهم.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> nafis.gov.ae</div>
+              <div class="r-info-item"><strong>للمواطنين:</strong> دعم تأهيل وتوظيف</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-ngo">خيري</span>
+            <h3>الهيئة الخيرية الإسلامية العالمية</h3>
+            <p>مساعدات طارئة للأسر المحتاجة — غذاء، إيجار، وخدمات اجتماعية.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> iico.org</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-legal">قانوني</span>
+            <h3>مركز حماية حقوق العمال</h3>
+            <p>إذا لم تستلم راتبك أو مكافأتك — تقدم ببلاغ عبر وزارة الموارد البشرية.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> mohre.gov.ae</div>
+              <div class="r-info-item"><strong>الرقم:</strong> 800 60</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JORDAN -->
+      <div class="country-panel" id="jordan">
+        <span class="category-label">🇯🇴 الأردن</span>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="resource-type type-gov">حكومي</span>
+            <h3>المؤسسة العامة للضمان الاجتماعي</h3>
+            <p>تأمين البطالة للمؤمَّن عليهم — يُغطي نسبة من الراتب الأخير لفترة محددة بعد فقدان العمل لأسباب خارج إرادة الموظف.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> ssc.gov.jo</div>
+              <div class="r-info-item"><strong>الشرط:</strong> اشتراك بالضمان + شروط الاستحقاق</div>
+              <div class="r-info-item"><strong>الرقم:</strong> 06-5100100</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-gov">حكومي</span>
+            <h3>صندوق المعونة الوطنية</h3>
+            <p>دعم نقدي شهري للأسر الأردنية المحتاجة وفق معايير الدخل. يشمل مساعدات غذائية وتعليمية وصحية.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> mosd.gov.jo</div>
+              <div class="r-info-item"><strong>التقديم:</strong> عبر مديريات الشؤون الاجتماعية</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-ngo">خيري</span>
+            <h3>الهيئة الخيرية الأردنية الهاشمية</h3>
+            <p>مساعدات غذائية وإيجار طارئ وخدمات اجتماعية متنوعة للأسر المتضررة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الرقم:</strong> 06-5659160</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-ngo">توظيف</span>
+            <h3>مركز العمل الوطني (NCHRD)</h3>
+            <p>تدريب مهني وتوظيف — خصوصاً للشباب الباحث عن عمل. دورات مجانية ومدعومة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> nchrd.gov.jo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EGYPT -->
+      <div class="country-panel" id="egypt">
+        <span class="category-label">🇪🇬 مصر</span>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="resource-type type-gov">حكومي</span>
+            <h3>الهيئة القومية للتأمين الاجتماعي</h3>
+            <p>تأمين البطالة للعمال المؤمَّن عليهم في القطاع الخاص — يتطلب فقدان العمل لأسباب خارجة عن الإرادة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الجهة:</strong> وزارة التضامن الاجتماعي</div>
+              <div class="r-info-item"><strong>الموقع:</strong> moss.gov.eg</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-gov">حكومي</span>
+            <h3>برنامج تكافل وكرامة</h3>
+            <p>دعم نقدي شهري للأسر المصرية المحتاجة — تكافل للأسر التي لديها أطفال، كرامة لكبار السن وذوي الإعاقة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> moss.gov.eg</div>
+              <div class="r-info-item"><strong>التقديم:</strong> عبر مكاتب التضامن الاجتماعي</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-ngo">خيري</span>
+            <h3>بنك الطعام المصري</h3>
+            <p>مساعدات غذائية طارئة وسلال غذائية للأسر المحتاجة خلال الأزمات.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> egyptfoodbank.org</div>
+              <div class="r-info-item"><strong>الرقم:</strong> 16820</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-ngo">توظيف</span>
+            <h3>منصة وظفني — توظيف مصري</h3>
+            <p>منصة توظيف مصرية تربط الباحثين عن عمل بشركات القطاع الخاص.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> wazzufni.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEBANON -->
+      <div class="country-panel" id="lebanon">
+        <span class="category-label">🇱🇧 لبنان — أزمة خاصة تستدعي موارد خاصة</span>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="resource-type type-intl">دولي</span>
+            <h3>برنامج الغذاء العالمي في لبنان</h3>
+            <p>في ظل الأزمة الاقتصادية اللبنانية، يدعم WFP الأسر المتضررة بمساعدات نقدية وغذائية مباشرة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> wfp.org/ar/countries/lebanon</div>
+              <div class="r-info-item"><strong>الرقم:</strong> 01-985301</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-intl">دولي</span>
+            <h3>اليونيسف — دعم الأطفال والأسر</h3>
+            <p>مساعدات نقدية طارئة للأسر اللبنانية المتضررة مع أطفال — مدفوعات مباشرة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> unicef.org/lebanon/ar</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-ngo">خيري</span>
+            <h3>جمعية صحة بلا حدود</h3>
+            <p>رعاية صحية مجانية أو مدعومة — خاصة للعائلات التي لا تستطيع تحمل تكاليف العلاج.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> healthwithoutborders.org</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-ngo">خيري</span>
+            <h3>الكاريتاس لبنان</h3>
+            <p>مساعدات غذائية، إيجار، ومساعدة في فواتير الكهرباء للأسر اللبنانية المتضررة.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> caritas.org.lb</div>
+              <div class="r-info-item"><strong>الرقم:</strong> 01-562660</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERNATIONAL (Western countries) -->
+      <div class="country-panel" id="intl">
+        <span class="category-label">🌐 الدول الغربية — للمقيمين العرب</span>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <span class="resource-type type-gov">أمريكا</span>
+            <h3>تأمين البطالة الأمريكي</h3>
+            <p>يُغطي 30-60% من الراتب الأخير لمدة تصل 26 أسبوعاً. تقدم فوراً — المعالجة تأخذ أسابيع.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> dol.gov/unemployment</div>
+              <div class="r-info-item"><strong>النصيحة:</strong> قدّم حتى لو عندك مدخرات</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-gov">أمريكا</span>
+            <h3>برامج المساعدة الغذائية (SNAP / Food Pantries)</h3>
+            <p>مساعدات غذائية للأسر ذات الدخل المنخفض — مدة المعالجة قد تصل 30 يوماً، قدّم مبكراً.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> benefits.gov</div>
+              <div class="r-info-item"><strong>الطوارئ:</strong> مصارف الطعام المحلية (foodpantry.com)</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-gov">كندا</span>
+            <h3>Employment Insurance (EI) — كندا</h3>
+            <p>تأمين العمل الكندي — قدّم خلال 4 أسابيع من انتهاء العمل لتجنب تأخير الدفعات.</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>الموقع:</strong> canada.ca/en/employment</div>
+              <div class="r-info-item"><strong>الرقم:</strong> 1-800-206-7218</div>
+            </div>
+          </div>
+          <div class="resource-card">
+            <span class="resource-type type-gov">أوروبا</span>
+            <h3>تأمين البطالة الأوروبي</h3>
+            <p>كل دولة أوروبية لديها نظام تأمين بطالة خاص بها — تحقق من الـJobcenter (ألمانيا) أو Pôle Emploi (فرنسا) أو Job Centre Plus (بريطانيا).</p>
+            <div class="resource-info">
+              <div class="r-info-item"><strong>النصيحة:</strong> قدّم فوراً — لا تنتظر</div>
+              <div class="r-info-item"><strong>الدعم العربي:</strong> ابحث عن مراكز خدمات عربية محلية</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GENERAL TIPS -->
+      <div class="section-header" style="margin-top:56px;">
+        <span class="eyebrow">نصائح عامة</span>
+        <h2 class="section-title">كيف تطلب المساعدة بفعالية</h2>
+      </div>
+
+      <div class="general-grid" style="margin-bottom:32px;">
+        <div class="gen-card">
+          <div class="gen-icon">⚡</div>
+          <h4>تقدّم مبكراً</h4>
+          <p>معظم البرامج تأخذ أسابيع للمعالجة. تقديم الطلب اليوم أفضل من الانتظار حتى تنفد الموارد.</p>
+        </div>
+        <div class="gen-card">
+          <div class="gen-icon">📋</div>
+          <h4>اجمع وثائقك أولاً</h4>
+          <p>هوية، وثيقة إنهاء خدمة أو شهادة بطالة، كشف راتب أخير. معظم البرامج تطلب هذه الوثائق الأساسية.</p>
+        </div>
+        <div class="gen-card">
+          <div class="gen-icon">🔄</div>
+          <h4>تابع طلبك</h4>
+          <p>الطلب المقدّم لا يُعالَج تلقائياً دائماً. اتصل بعد أسبوع وتأكد من استلامه وحالته.</p>
+        </div>
+        <div class="gen-card">
+          <div class="gen-icon">🤝</div>
+          <h4>لا تستحِ من الطلب</h4>
+          <p>البرامج موجودة لهذا الغرض تحديداً. الاستفادة منها حق قانوني — ليس عاراً.</p>
+        </div>
+        <div class="gen-card">
+          <div class="gen-icon">📞</div>
+          <h4>استخدم العائلة والشبكة</h4>
+          <p>مطلوب منك التحدث بصراحة مع الأهل والأصدقاء. مساعدة الأسرة كثيراً ما تكون أسرع من المؤسسات.</p>
+        </div>
+        <div class="gen-card">
+          <div class="gen-icon">⚠️</div>
+          <h4>احذر الاحتيال</h4>
+          <p>أي جهة تطلب رسوماً مقدمة مقابل مساعدتك في الحصول على مساعدات حكومية — هذا احتيال. الجهات الشرعية مجانية.</p>
+        </div>
+      </div>
+
+      <div class="article-body">
+        <div class="callout">
+          <strong>🛡️ تذكّر:</strong> الموارد المذكورة أعلاه ليست شاملة — قد يكون في بلدك أو مدينتك موارد محلية أكثر ملاءمة لوضعك. ابحث عبر "مساعدات اجتماعية + اسم مدينتك" أو تواصل مع المسجد أو الكنيسة المحلية أو مراكز الشباب — كثيراً ما يكون لديها معلومات عن موارد غير معلنة.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <div class="container">
+      <h2>عندك خطة؟</h2>
+      <p>الموارد تساعد — لكن الخطة هي ما تبقيك على المسار. ابدأ الـ30 يوم الآن.</p>
+      <a href="plan.html" class="btn-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        خطة الـ30 يوم
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand"><div class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><span class="logo-wordmark">نجاة</span></div><p>دليل عربي عملي لإدارة الأزمات المالية</p></div>
+      <div class="footer-col"><h4>الخطة</h4><a href="plan.html">خطة الـ30 يوم</a><a href="debts.html">إدارة الديون</a></div>
+      <div class="footer-col"><h4>المدونة</h4><a href="blog/first-72-hours.html">الـ72 ساعة الأولى</a><a href="blog/index.html">كل المقالات</a></div>
+      <div class="footer-col"><h4>الموارد</h4><a href="resources.html">مساعدات ودعم</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2024 نجاة.</span><span>UNHCR · WFP · ILO · وزارات الشؤون الاجتماعية</span></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function showCountry(c) {
+      document.querySelectorAll('.country-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.country-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(c).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

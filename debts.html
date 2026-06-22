@@ -1,9 +1,337 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>إدارة الديون | نجاة</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body>
-<nav class="nav" id="nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><span class="logo-wordmark">نجاة</span></a><div class="nav-links"><a href="plan.html" class="nav-link">خطة الـ30 يوم</a><a href="debts.html" class="nav-link">إدارة الديون</a><a href="blog/index.html" class="nav-link">المدونة</a><a href="resources.html" class="nav-link">الموارد</a><a href="plan.html" class="btn btn-primary btn-sm">ابدأ الخطة</a></div><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobileMenu"><a href="plan.html">خطة الـ30 يوم</a><a href="blog/index.html">المدونة</a></div></nav>
-<div class="page-hero"><span class="eyebrow">نجاة</span><h1>إدارة الديون</h1><p>ترتيب الأولويات والتعامل مع كل نوع من الديون</p></div>
-<section class="section"><div class="container" style="text-align:center; padding:40px 24px;">
-<p style="font-size:1rem; color:var(--muted); max-width:500px; margin:0 auto 24px; line-height:1.8;">هذه الصفحة قيد الإعداد وستُطلق قريباً بمحتوى كامل ومفصّل.</p>
-<a href="plan.html" class="btn btn-primary">ابدأ خطة الـ30 يوم الآن</a>
-</div></section>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><div class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><span class="logo-wordmark">نجاة</span></div><p>دليل عربي عملي لإدارة الأزمات المالية</p></div><div class="footer-col"><h4>الخطة</h4><a href="plan.html">خطة الـ30 يوم</a><a href="debts.html">إدارة الديون</a></div><div class="footer-col"><h4>المدونة</h4><a href="blog/index.html">كل المقالات</a></div><div class="footer-col"><h4>الموارد</h4><a href="resources.html">مساعدات ودعم</a></div></div><div class="footer-bottom"><span>© 2024 نجاة.</span></div></footer>
-<script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إدارة الديون في الأزمة | نجاة — دليل الأزمة المالية</title>
+  <meta name="description" content="كيف ترتب ديونك في الأزمة المالية وتختار بين كرة الثلج والانهيار الجليدي — مع جدول أولويات واضح مدعوم بمنهجية Experian وNavy Federal وWells Fargo.">
+  <meta name="keywords" content="إدارة الديون, كرة الثلج, الانهيار الجليدي, أولويات الديون, سداد الديون">
+  <link rel="canonical" href="https://najat.github.io/debts.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "إدارة الديون في الأزمة المالية",
+    "description": "دليل عملي لترتيب الديون وأولوياتها خلال الأزمة المالية",
+    "author": { "@type": "Organization", "name": "نجاة" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+    .method-card {
+      border: 2px solid var(--border-m); border-radius: var(--rl); padding: 26px;
+      position: relative; transition: all 0.2s; cursor: pointer;
+    }
+    .method-card:hover { transform: translateY(-2px); }
+    .method-card.selected-green { border-color: var(--g600); background: var(--g50); }
+    .method-card.selected-blue { border-color: var(--info); background: var(--info-light); }
+    .method-icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .method-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .method-card .method-sub { font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-bottom: 14px; }
+    .method-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+    .method-pros { display: flex; flex-direction: column; gap: 5px; }
+    .method-pro { font-size: 0.82rem; color: var(--g800); display: flex; align-items: center; gap: 7px; }
+    .method-pro::before { content: '✓'; font-weight: 700; color: var(--g600); flex-shrink: 0; }
+    .method-con { font-size: 0.82rem; color: var(--danger); display: flex; align-items: center; gap: 7px; }
+    .method-con::before { content: '↓'; font-weight: 700; flex-shrink: 0; }
+    .method-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--g600); color: #fff; font-size: 0.68rem; font-weight: 700; padding: 3px 12px; border-radius: 12px; white-space: nowrap; }
+
+    .quiz-debt {
+      background: var(--bg2); border: 1px solid var(--border-m); border-radius: var(--rl);
+      padding: 28px; margin-bottom: 32px;
+    }
+    .quiz-debt h3 { font-size: 1rem; font-weight: 700; margin-bottom: 18px; color: var(--text); }
+    .quiz-q { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+    .quiz-opts { display: flex; flex-direction: column; gap: 7px; margin-bottom: 20px; }
+    .quiz-opt {
+      display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+      border: 1px solid var(--border-m); border-radius: var(--r); cursor: pointer;
+      font-size: 0.88rem; transition: all 0.15s;
+    }
+    .quiz-opt:hover { border-color: var(--g400); background: var(--g50); }
+    .quiz-opt input { accent-color: var(--g600); }
+    .quiz-result-d { padding: 14px 18px; border-radius: var(--r); margin-top: 10px; display: none; font-size: 0.9rem; font-weight: 600; line-height: 1.6; }
+    .quiz-result-d.show { display: block; }
+    .res-snow { background: var(--g50); color: var(--g800); border: 1px solid var(--g200); }
+    .res-aval { background: var(--info-light); color: var(--info); border: 1px solid rgba(24,95,165,0.2); }
+    .res-both { background: var(--warn-light); color: var(--warn); border: 1px solid rgba(133,79,11,0.2); }
+
+    .debt-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.2fr; gap: 0; }
+    .debt-row.header { background: var(--g900); border-radius: var(--r) var(--r) 0 0; }
+    .debt-cell { padding: 12px 16px; font-size: 0.85rem; border-bottom: 1px solid var(--border); }
+    .debt-row.header .debt-cell { color: rgba(255,255,255,0.65); font-weight: 600; font-size: 0.78rem; }
+    .debt-row:last-child .debt-cell { border-bottom: none; }
+    .debt-row:hover .debt-cell { background: var(--bg2); }
+    .debt-rank { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; }
+    .rank-critical { background: var(--danger); color: #fff; }
+    .rank-high { background: var(--gold); color: #fff; }
+    .rank-med { background: var(--g600); color: #fff; }
+    .rank-low { background: var(--subtle); color: #fff; }
+
+    @media (max-width: 640px) {
+      .method-grid { grid-template-columns: 1fr; }
+      .debt-row { grid-template-columns: 1fr 1fr; }
+      .debt-cell:nth-child(3), .debt-cell:nth-child(4) { display: none; }
+      .debt-row.header .debt-cell:nth-child(3), .debt-row.header .debt-cell:nth-child(4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div>
+        <span class="logo-wordmark">نجاة</span>
+      </a>
+      <div class="nav-links">
+        <a href="plan.html" class="nav-link">خطة الـ30 يوم</a>
+        <a href="debts.html" class="nav-link active">إدارة الديون</a>
+        <a href="emergency-fund.html" class="nav-link">صندوق الطوارئ</a>
+        <a href="blog/index.html" class="nav-link">المدونة</a>
+        <a href="resources.html" class="nav-link">الموارد</a>
+        <a href="plan.html" class="btn btn-primary btn-sm">ابدأ الخطة</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="plan.html">خطة الـ30 يوم</a>
+      <a href="debts.html">إدارة الديون</a>
+      <a href="blog/index.html">المدونة</a>
+      <a href="resources.html">الموارد</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <span class="eyebrow">إدارة الديون</span>
+    <h1>ليست كل الديون متساوية</h1>
+    <p>ترتيب الأولويات الصحيح يمنعك من الخطأ الأكبر: دفع الدين الخطأ أولاً</p>
+  </div>
+
+  <main>
+  <section class="section">
+    <div class="container">
+
+      <!-- PRIORITY TABLE -->
+      <div class="section-header">
+        <span class="eyebrow">الخطوة الأولى</span>
+        <h2 class="section-title">ما الذي تدفعه أولاً — وما تؤجله</h2>
+        <p class="section-sub">في الأزمة، الترتيب أهم من المبلغ. ادفع الشيء الصح أولاً.</p>
+      </div>
+
+      <div style="overflow-x:auto; border-radius:var(--rl); border:1px solid var(--border-m); margin-bottom:48px;">
+        <div class="debt-row header">
+          <div class="debt-cell">نوع الدين</div>
+          <div class="debt-cell">الأولوية</div>
+          <div class="debt-cell">العواقب إذا تأخرت</div>
+          <div class="debt-cell">إمكانية التفاوض</div>
+          <div class="debt-cell">ماذا تفعل؟</div>
+        </div>
+        <div class="debt-row">
+          <div class="debt-cell"><strong>إيجار / قسط المنزل</strong></div>
+          <div class="debt-cell"><span class="debt-rank rank-critical" style="display:inline-flex;">1</span></div>
+          <div class="debt-cell">إخلاء / توقف التمويل</div>
+          <div class="debt-cell">عالية — تواصل مبكراً</div>
+          <div class="debt-cell">ادفع أو تفاوض فوراً</div>
+        </div>
+        <div class="debt-row">
+          <div class="debt-cell"><strong>كهرباء ومياه</strong></div>
+          <div class="debt-cell"><span class="debt-rank rank-critical" style="display:inline-flex;">1</span></div>
+          <div class="debt-cell">قطع الخدمة</div>
+          <div class="debt-cell">عالية — برامج صعوبات</div>
+          <div class="debt-cell">اتصل واطلب تأجيلاً</div>
+        </div>
+        <div class="debt-row">
+          <div class="debt-cell"><strong>قسط السيارة (إذا وسيلة عمل)</strong></div>
+          <div class="debt-cell"><span class="debt-rank rank-high" style="display:inline-flex;">2</span></div>
+          <div class="debt-cell">سحب السيارة</div>
+          <div class="debt-cell">متوسطة — forbearance</div>
+          <div class="debt-cell">اتصل بالممول للتأجيل</div>
+        </div>
+        <div class="debt-row">
+          <div class="debt-cell"><strong>قرض شخصي / بنكي</strong></div>
+          <div class="debt-cell"><span class="debt-rank rank-med" style="display:inline-flex;">3</span></div>
+          <div class="debt-cell">تأثير ائتماني، رسوم تأخير</div>
+          <div class="debt-cell">متوسطة — hardship plan</div>
+          <div class="debt-cell">ادفع الحد الأدنى أو تفاوض</div>
+        </div>
+        <div class="debt-row">
+          <div class="debt-cell"><strong>بطاقة ائتمان</strong></div>
+          <div class="debt-cell"><span class="debt-rank rank-low" style="display:inline-flex;">4</span></div>
+          <div class="debt-cell">رسوم وفوائد متراكمة</div>
+          <div class="debt-cell">عالية — settlement ممكن</div>
+          <div class="debt-cell">الحد الأدنى فقط الآن</div>
+        </div>
+        <div class="debt-row">
+          <div class="debt-cell"><strong>ديون غير رسمية (أصدقاء / عائلة)</strong></div>
+          <div class="debt-cell"><span class="debt-rank rank-low" style="display:inline-flex;">4</span></div>
+          <div class="debt-cell">علاقات اجتماعية</div>
+          <div class="debt-cell">عالية جداً — تحدّث بصراحة</div>
+          <div class="debt-cell">صارحهم قبل أن يسألوا</div>
+        </div>
+      </div>
+
+      <!-- METHOD QUIZ -->
+      <div class="section-header">
+        <span class="eyebrow">اختر استراتيجيتك</span>
+        <h2 class="section-title">كرة الثلج أم الانهيار الجليدي؟</h2>
+        <p class="section-sub">أجب على سؤالين واحصل على توصية مناسبة لشخصيتك</p>
+      </div>
+
+      <div class="quiz-debt">
+        <h3>اكتشف الاستراتيجية الأنسب لك</h3>
+        <div class="quiz-q">1. حين تواجه هدفاً صعباً، ما الذي يبقيك متحمساً أكثر؟</div>
+        <div class="quiz-opts">
+          <label class="quiz-opt"><input type="radio" name="dq1" value="s"> رؤية تقدم سريع، حتى لو صغير — الانتصارات الصغيرة تحفّزني</label>
+          <label class="quiz-opt"><input type="radio" name="dq1" value="a"> معرفة أنني أتخذ القرار الأذكى رياضياً، حتى لو أخذ وقتاً</label>
+          <label class="quiz-opt"><input type="radio" name="dq1" value="b"> يتوقف على الموقف</label>
+        </div>
+        <div class="quiz-q">2. ما وصف ديونك الحالية أقرب للواقع؟</div>
+        <div class="quiz-opts">
+          <label class="quiz-opt"><input type="radio" name="dq2" value="s"> عندي ديون صغيرة متعددة وأريد التخلص منها بسرعة</label>
+          <label class="quiz-opt"><input type="radio" name="dq2" value="a"> عندي دين كبير بفائدة عالية يأكل معظم مدفوعاتي</label>
+          <label class="quiz-opt"><input type="radio" name="dq2" value="b"> مزيج من الاثنين</label>
+        </div>
+        <button class="btn btn-primary" id="debtQuizBtn" style="width:100%; justify-content:center; margin-top:8px;">أعطني توصيتي</button>
+        <div id="debtResult" class="quiz-result-d"></div>
+      </div>
+
+      <!-- TWO METHODS -->
+      <div class="method-grid">
+        <div class="method-card">
+          <div class="method-badge" style="background:var(--g600);">الأقوى نفسياً</div>
+          <div class="method-icon">❄️</div>
+          <h3>كرة الثلج (Snowball)</h3>
+          <div class="method-sub">ابدأ بأصغر دين — بغض النظر عن الفائدة</div>
+          <p>ادفع الحد الأدنى لكل الديون، ووجّه أي مبلغ إضافي لأصغر دين. لما يُسدَّد — انقل مبلغ دفعته لثاني أصغر دين، وهكذا. المبدأ: الزخم النفسي من الإنجازات السريعة.</p>
+          <div class="method-pros">
+            <div class="method-pro">انتصارات سريعة تبني الثقة</div>
+            <div class="method-pro">تعمل ممتاز مع من يحتاج تحفيزاً</div>
+            <div class="method-pro">أسهل في التطبيق والمتابعة</div>
+            <div class="method-con">قد تدفع فائدة أكثر إجمالاً</div>
+          </div>
+        </div>
+        <div class="method-card">
+          <div class="method-badge" style="background:var(--info);">الأذكى رياضياً</div>
+          <div class="method-icon">🏔️</div>
+          <h3>الانهيار الجليدي (Avalanche)</h3>
+          <div class="method-sub">ابدأ بأعلى فائدة — لتوفير أكثر</div>
+          <p>ادفع الحد الأدنى لكل الديون، ووجّه أي مبلغ إضافي للدين بأعلى معدل فائدة. لما يُسدَّد — انتقل لأعلى فائدة تالية. وفق Experian: هذا الأسلوب يوفر أكثر على المدى البعيد.</p>
+          <div class="method-pros">
+            <div class="method-pro">توفير فائدة أكبر إجمالاً</div>
+            <div class="method-pro">أسرع رياضياً في الانتهاء من الديون</div>
+            <div class="method-pro">قرار منطقي ومدروس</div>
+            <div class="method-con">قد يستغرق وقتاً لرؤية التقدم</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-bottom:48px;">
+        <strong>💡 الحقيقة التي تتفق عليها كل المصادر:</strong> كلتا الطريقتين ممتازتان. وفق Navy Federal Credit Union: <strong>"أفضل خطة سداد ديون هي التي تستطيع الالتزام بها حتى النهاية."</strong> ما يهم أكثر من اختيار الطريقة هو <strong>البدء</strong>.
+      </div>
+
+      <!-- PRACTICAL STEPS -->
+      <div class="section-header">
+        <span class="eyebrow">خطوات عملية</span>
+        <h2 class="section-title">كيف تبدأ الآن — بغض النظر عن طريقتك</h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <span class="step-badge badge-d">اليوم</span>
+          <h3>اكتب قائمة كل ديونك</h3>
+          <p>لكل دين: المبلغ الكلي، الدفعة الشهرية، معدل الفائدة، تاريخ الاستحقاق. لا تحتاج ورقة معقدة — حتى قائمة في هاتفك تكفي.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <span class="step-badge badge-w">هذا الأسبوع</span>
+          <h3>تأكد من دفع الحد الأدنى لكل دين</h3>
+          <p>قبل أي استراتيجية، تأكد أنك لا تفوّت دفعة أدنى لأي دين. التأخر يُضاف عليه فوائد ورسوم تجعل الوضع أصعب.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <span class="step-badge badge-w">هذا الأسبوع</span>
+          <h3>اختر طريقتك ورتّب قائمتك</h3>
+          <p>كرة الثلج = رتّب من الأصغر مبلغاً للأكبر. الانهيار الجليدي = رتّب من الأعلى فائدة للأدنى. الدين الأول في قائمتك هو هدفك.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <span class="step-badge badge-g">هذا الشهر</span>
+          <h3>تواصل مع الدائنين إذا لم تستطع الدفع</h3>
+          <p>لا تختفِ. اتصل واطلب برنامج الصعوبات. وفق ASAP Credit Repair: 70% من المتصلين المبكرين يحصلون على نوع من التخفيف في المكالمة الأولى.</p>
+        </div>
+      </div>
+
+      <!-- WARNING -->
+      <div class="article-body" style="margin-top:40px;">
+        <div class="warn-box">
+          <strong>⚠️ ما لا تفعله مطلقاً في إدارة الديون:</strong>
+          <ul style="margin:10px 0 0; padding-right:18px;">
+            <li>لا تقترض ديناً جديداً بفائدة مرتفعة لسداد دين قديم — إلا بعد تحليل دقيق</li>
+            <li>لا تسحب من صندوق التقاعد قبل استشارة متخصص — الغرامات والضرائب مكلفة جداً</li>
+            <li>لا تتجاهل رسائل الدائنين — الصمت يُحوّل الدين لقضية قانونية بسرعة</li>
+            <li>لا توقف دفعات بطاقة الائتمان كلياً دون التواصل أولاً — حتى الحد الأدنى يمنع الأسوأ</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin-top:16px; font-size:0.82rem; color:var(--subtle);">
+        <strong>المصادر:</strong> Experian "Avalanche vs Snowball" · Navy Federal Credit Union · Wells Fargo Debt Strategies · Federal Reserve Bank of New York Q3 2024 · Prosper "Debt Snowball vs Debt Avalanche" · Grow Financial
+      </p>
+
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <div class="container">
+      <h2>الخطوة التالية: بناء صندوق طوارئ</h2>
+      <p>بعد وضع خطة الديون، ابدأ ببناء حاجزك المالي لمنع الوقوع مجدداً.</p>
+      <a href="emergency-fund.html" class="btn-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        صندوق الطوارئ
+      </a>
+    </div>
+  </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><span class="logo-wordmark">نجاة</span></div>
+        <p>دليل عربي عملي لإدارة الأزمات المالية</p>
+      </div>
+      <div class="footer-col"><h4>الخطة</h4><a href="plan.html">خطة الـ30 يوم</a><a href="debts.html">إدارة الديون</a><a href="emergency-fund.html">صندوق الطوارئ</a></div>
+      <div class="footer-col"><h4>المدونة</h4><a href="blog/first-72-hours.html">الـ72 ساعة الأولى</a><a href="blog/index.html">كل المقالات</a></div>
+      <div class="footer-col"><h4>الموارد</h4><a href="resources.html">مساعدات ودعم</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2024 نجاة.</span><span>Experian · Navy Federal · Wells Fargo</span></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('debtQuizBtn').addEventListener('click', function() {
+      const q1 = document.querySelector('input[name="dq1"]:checked');
+      const q2 = document.querySelector('input[name="dq2"]:checked');
+      if (!q1 || !q2) { alert('أجب على السؤالين أولاً'); return; }
+      const v1 = q1.value, v2 = q2.value;
+      const res = document.getElementById('debtResult');
+      res.className = 'quiz-result-d show';
+      if (v1 === 's' && v2 === 's') {
+        res.className += ' res-snow';
+        res.innerHTML = '❄️ <strong>كرة الثلج مناسبة لك.</strong> تحتاج انتصارات سريعة لتبقى متحمساً، وديونك الصغيرة ستُسدَّد بسرعة وتعطيك زخماً. ابدأ بأصغر دين.';
+      } else if (v1 === 'a' && v2 === 'a') {
+        res.className += ' res-aval';
+        res.innerHTML = '🏔️ <strong>الانهيار الجليدي مناسب لك.</strong> تتحمل الصبر وتفضل القرار الأذكى رياضياً. ستوفر أكثر على المدى البعيد. ابدأ بالدين الأعلى فائدة.';
+      } else {
+        res.className += ' res-both';
+        res.innerHTML = '⚖️ <strong>يمكنك دمج الطريقتين.</strong> ابدأ بكرة الثلج لتثبيت الزخم النفسي (دين صغير أو اثنين)، ثم انتقل للانهيار الجليدي للتوفير على المدى البعيد. المهم البدء.';
+      }
+    });
+  </script>
+</body>
+</html>

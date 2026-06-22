@@ -1,9 +1,324 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>صندوق الطوارئ | نجاة</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body>
-<nav class="nav" id="nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><span class="logo-wordmark">نجاة</span></a><div class="nav-links"><a href="plan.html" class="nav-link">خطة الـ30 يوم</a><a href="debts.html" class="nav-link">إدارة الديون</a><a href="blog/index.html" class="nav-link">المدونة</a><a href="resources.html" class="nav-link">الموارد</a><a href="plan.html" class="btn btn-primary btn-sm">ابدأ الخطة</a></div><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobileMenu"><a href="plan.html">خطة الـ30 يوم</a><a href="blog/index.html">المدونة</a></div></nav>
-<div class="page-hero"><span class="eyebrow">نجاة</span><h1>صندوق الطوارئ</h1><p>كيف تبني حمايتك المالية بعد الأزمة</p></div>
-<section class="section"><div class="container" style="text-align:center; padding:40px 24px;">
-<p style="font-size:1rem; color:var(--muted); max-width:500px; margin:0 auto 24px; line-height:1.8;">هذه الصفحة قيد الإعداد وستُطلق قريباً بمحتوى كامل ومفصّل.</p>
-<a href="plan.html" class="btn btn-primary">ابدأ خطة الـ30 يوم الآن</a>
-</div></section>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><div class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><span class="logo-wordmark">نجاة</span></div><p>دليل عربي عملي لإدارة الأزمات المالية</p></div><div class="footer-col"><h4>الخطة</h4><a href="plan.html">خطة الـ30 يوم</a><a href="debts.html">إدارة الديون</a></div><div class="footer-col"><h4>المدونة</h4><a href="blog/index.html">كل المقالات</a></div><div class="footer-col"><h4>الموارد</h4><a href="resources.html">مساعدات ودعم</a></div></div><div class="footer-bottom"><span>© 2024 نجاة.</span></div></footer>
-<script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صندوق الطوارئ | نجاة — دليل الأزمة المالية</title>
+  <meta name="description" content="55% فقط لديهم 3 أشهر مدخرات وفق Federal Reserve 2024. كيف تبني صندوق طوارئ من الصفر — حاسبة تفاعلية وخطة 4 مراحل مدعومة بـVanguard وBankrate.">
+  <meta name="keywords" content="صندوق طوارئ, مدخرات طارئة, كيف أدخر, بناء مدخرات">
+  <link rel="canonical" href="https://najat.github.io/emergency-fund.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .calc-card {
+      background: var(--bg2); border: 1px solid var(--border-m); border-radius: var(--rl);
+      padding: 32px; margin-bottom: 48px;
+    }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+    .calc-field label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--muted); margin-bottom: 7px; }
+    .calc-field input {
+      width: 100%; padding: 11px 14px; border: 1.5px solid var(--border-m);
+      border-radius: var(--r); font-family: var(--font); font-size: 0.92rem;
+      background: var(--bg); color: var(--text); transition: border-color 0.15s;
+    }
+    .calc-field input:focus { outline: none; border-color: var(--g600); }
+    .calc-result {
+      background: var(--g900); border-radius: var(--r); padding: 20px 24px;
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; text-align: center;
+    }
+    .cr-label { font-size: 0.73rem; color: rgba(255,255,255,0.45); margin-bottom: 5px; }
+    .cr-num { font-size: 1.7rem; font-weight: 700; color: var(--g200); letter-spacing: -1px; }
+    .cr-sub { font-size: 0.7rem; color: rgba(255,255,255,0.25); margin-top: 3px; }
+
+    .phase-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 48px; }
+    .phase-card {
+      border: 1px solid var(--border-m); border-radius: var(--rl); padding: 20px 16px;
+      text-align: center; position: relative; background: var(--bg);
+    }
+    .phase-num {
+      width: 40px; height: 40px; border-radius: 50%; background: var(--g50);
+      color: var(--g800); font-size: 1.1rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
+    }
+    .phase-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .phase-card .phase-target { font-size: 0.95rem; font-weight: 700; color: var(--g600); margin-bottom: 8px; }
+    .phase-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+    .phase-card .phase-src { font-size: 0.68rem; color: var(--subtle); margin-top: 8px; }
+
+    .tip-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .tip-card {
+      background: var(--bg); border: 1px solid var(--border-m); border-radius: var(--rl);
+      padding: 18px; transition: all 0.2s;
+    }
+    .tip-card:hover { border-color: var(--g200); transform: translateY(-2px); }
+    .tip-icon { font-size: 1.5rem; margin-bottom: 10px; }
+    .tip-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .tip-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    @media (max-width:960px) {
+      .phase-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width:640px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .calc-result { grid-template-columns: 1fr; }
+      .phase-grid { grid-template-columns: 1fr; }
+      .tip-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div>
+        <span class="logo-wordmark">نجاة</span>
+      </a>
+      <div class="nav-links">
+        <a href="plan.html" class="nav-link">خطة الـ30 يوم</a>
+        <a href="debts.html" class="nav-link">إدارة الديون</a>
+        <a href="emergency-fund.html" class="nav-link active">صندوق الطوارئ</a>
+        <a href="blog/index.html" class="nav-link">المدونة</a>
+        <a href="resources.html" class="nav-link">الموارد</a>
+        <a href="plan.html" class="btn btn-primary btn-sm">ابدأ الخطة</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="plan.html">خطة الـ30 يوم</a>
+      <a href="debts.html">إدارة الديون</a>
+      <a href="blog/index.html">المدونة</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <span class="eyebrow">صندوق الطوارئ</span>
+    <h1>حمايتك المالية تبدأ من هنا</h1>
+    <p>55% فقط لديهم مدخرات تكفي 3 أشهر — وفق Federal Reserve 2024. ابنِ حاجزك خطوة في وقت واحد</p>
+  </div>
+
+  <main>
+  <section class="section">
+    <div class="container">
+
+      <!-- CALCULATOR -->
+      <div class="section-header">
+        <span class="eyebrow">احسب هدفك</span>
+        <h2 class="section-title">كم تحتاج في صندوق طوارئك؟</h2>
+        <p class="section-sub">أدخل نفقاتك الأساسية فقط — لا المجموع الكامل</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>الإيجار أو قسط المنزل (شهرياً)</label>
+            <input type="number" id="f1" placeholder="0" oninput="calcFund()" min="0">
+          </div>
+          <div class="calc-field">
+            <label>فواتير الكهرباء والمياه والغاز</label>
+            <input type="number" id="f2" placeholder="0" oninput="calcFund()" min="0">
+          </div>
+          <div class="calc-field">
+            <label>طعام أساسي (بقالة لا مطاعم)</label>
+            <input type="number" id="f3" placeholder="0" oninput="calcFund()" min="0">
+          </div>
+          <div class="calc-field">
+            <label>مواصلات ضرورية للعمل</label>
+            <input type="number" id="f4" placeholder="0" oninput="calcFund()" min="0">
+          </div>
+          <div class="calc-field">
+            <label>تأمين صحي أساسي</label>
+            <input type="number" id="f5" placeholder="0" oninput="calcFund()" min="0">
+          </div>
+          <div class="calc-field">
+            <label>حد أدنى للديون الأساسية</label>
+            <input type="number" id="f6" placeholder="0" oninput="calcFund()" min="0">
+          </div>
+        </div>
+        <div class="calc-result">
+          <div>
+            <div class="cr-label">الحد الأدنى الشهري</div>
+            <div class="cr-num" id="monthly">0</div>
+            <div class="cr-sub">نفقاتك الأساسية / شهر</div>
+          </div>
+          <div>
+            <div class="cr-label">هدف أول (شهر واحد)</div>
+            <div class="cr-num" id="oneMonth">0</div>
+            <div class="cr-sub">خط الأمان الأول</div>
+          </div>
+          <div>
+            <div class="cr-label">الهدف النهائي (3 أشهر)</div>
+            <div class="cr-num" id="threeMonths">0</div>
+            <div class="cr-sub">يوصي به Federal Reserve</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 PHASES -->
+      <div class="section-header">
+        <span class="eyebrow">خطة البناء</span>
+        <h2 class="section-title">4 مراحل من الصفر إلى 3 أشهر</h2>
+        <p class="section-sub">وفق Workings.me وVanguard: ابدأ بـ500 أولاً — الزخم يبني نفسه</p>
+      </div>
+
+      <div class="phase-grid">
+        <div class="phase-card">
+          <div class="phase-num">1</div>
+          <h3>المرحلة الأولى</h3>
+          <div class="phase-target">500 دولار</div>
+          <p>يغطي معظم الطوارئ الصغيرة: إصلاح سيارة، فاتورة طارئة، مرض بسيط. وفق Workings.me، هذا المبلغ يمنع اللجوء للديون في 70% من الحالات الطارئة.</p>
+          <div class="phase-src">Workings.me 2024</div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">2</div>
+          <h3>المرحلة الثانية</h3>
+          <div class="phase-target">شهر كامل</div>
+          <p>شهر من نفقاتك الأساسية (ليس كل إنفاقك). هذا يمنحك "نافذة تنفس" حقيقية لمواجهة طارئ حاد دون الشعور بالذعر الفوري.</p>
+          <div class="phase-src">Federal Reserve SHED</div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">3</div>
+          <h3>المرحلة الثالثة</h3>
+          <div class="phase-target">3 أشهر</div>
+          <p>الهدف الذي يوصي به Federal Reserve لمعظم الأسر. يغطي متوسط فترة البطالة في الولايات المتحدة (24+ أسبوعاً وفق BLS 2025) جزئياً.</p>
+          <div class="phase-src">Federal Reserve 2024</div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">4</div>
+          <h3>المرحلة الرابعة</h3>
+          <div class="phase-target">6 أشهر+</div>
+          <p>للعاملين لحسابهم الخاص، أصحاب الدخل غير المنتظم، أو من لديهم تبعيات عائلية كثيرة. يوصي به Bankrate 2026 كهدف نهائي مثالي.</p>
+          <div class="phase-src">Bankrate 2026</div>
+        </div>
+      </div>
+
+      <!-- HOW TO SAVE -->
+      <div class="section-header">
+        <span class="eyebrow">كيف تبني الصندوق</span>
+        <h2 class="section-title">6 طرق عملية — حتى بدون دخل منتظم</h2>
+      </div>
+
+      <div class="tip-grid" style="margin-bottom:40px;">
+        <div class="tip-card">
+          <div class="tip-icon">🏦</div>
+          <h4>حساب منفصل تماماً</h4>
+          <p>لا تضع الطوارئ في حسابك الجاري. درجة فصل واحدة بينك وبين المال تقلل الإنفاق غير الطارئ بشكل ملحوظ وفق خبراء التخطيط المالي.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">💰</div>
+          <h4>قاعدة الـ24 ساعة</h4>
+          <p>أي مبلغ غير متوقع تحصل عليه (مكافأة، دين قديم، هدية) — ضع 50% منه في الصندوق خلال 24 ساعة قبل أن "يختفي" في إنفاق عادي.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📦</div>
+          <h4>بيع ما لا تحتاجه</h4>
+          <p>ملابس، أجهزة قديمة، كتب، أثاث غير مستخدم. مبيعات السوشيال ميديا توفر نقداً فورياً وتحرر مساحة. كثيرون يجمعون 200-500$ من أول عملية بيع.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📈</div>
+          <h4>التحدي اليومي الصغير</h4>
+          <p>يوم 1: ادخر 1$، يوم 2: 2$، يوم 3: 3$... بعد 30 يوماً: 465$. وفق Vanguard: الاستمرارية اليومية تُجهَّز المدخرات نفسياً أكثر من المبلغ الكبير النادر.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔄</div>
+          <h4>تحويل تلقائي صغير</h4>
+          <p>حتى 50$ شهرياً بتحويل تلقائي من الحساب الرئيسي — "ما لا تراه لا تنفقه". 50$ شهرياً = 600$ في السنة بدون مجهود واعٍ.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🌿</div>
+          <h4>ادخر قبل الإنفاق</h4>
+          <p>قاعدة "ادفع نفسك أولاً": حين تصل أي مدفوعات، حوّل نسبة صغيرة للصندوق قبل أي شيء آخر. حتى 5% من أي دخل صغير يبني العادة.</p>
+        </div>
+      </div>
+
+      <!-- STATS BAR -->
+      <div style="background:var(--g900); border-radius:var(--rl); padding:28px 32px; margin-bottom:48px;">
+        <div class="eyebrow" style="color:var(--g200); margin-bottom:18px;">الواقع بالأرقام — Federal Reserve SHED 2024 و Bankrate 2026</div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; text-align:center;">
+          <div>
+            <div class="stat-n" data-count="55" data-suffix="%">55%</div>
+            <div class="stat-l">لديهم 3 أشهر مدخرات</div>
+            <div class="stat-s">— يعني 45% بلا حماية</div>
+          </div>
+          <div>
+            <div class="stat-n" data-count="37" data-suffix="%">37%</div>
+            <div class="stat-l">لا يستطيعون تغطية 400$ طارئة</div>
+            <div class="stat-s">— Federal Reserve 2024</div>
+          </div>
+          <div>
+            <div class="stat-n" data-count="30" data-suffix="%">30%</div>
+            <div class="stat-l">لا يستطيعون تغطية 3 أشهر بأي وسيلة</div>
+            <div class="stat-s">— Federal Reserve SHED</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DO/DON'T -->
+      <div class="section-header">
+        <span class="eyebrow">مهم</span>
+        <h2 class="section-title">ما تفعله وما تتجنبه</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card" style="border-color:var(--g100);">
+          <span class="step-badge badge-g">✓ افعل</span>
+          <h3>استخدم الصندوق في الطوارئ الحقيقية</h3>
+          <p>الطارئ هو ما يهدد الجدران الأربعة أو ما يصعب التنبؤ به. إصلاح سيارة، مرض مفاجئ، فقدان عمل — هذه هي الأسباب الحقيقية.</p>
+        </div>
+        <div class="step-card" style="border-color:var(--g100);">
+          <span class="step-badge badge-g">✓ افعل</span>
+          <h3>أعد بناءه بعد استخدامه</h3>
+          <p>إذا سحبت من الصندوق — هذا صواب بالضبط. لكن أعد بناءه أول فرصة. لا تحزن لأنك استخدمته — هذا هو سبب وجوده.</p>
+        </div>
+        <div class="step-card" style="border-color:var(--danger-light);">
+          <span class="step-badge badge-d">✗ تجنب</span>
+          <h3>لا تستخدمه لسداد الديون</h3>
+          <p>الصندوق موجود لمنعك من الاقتراض في الطوارئ — وليس لسداد ديون قائمة. استخدامه هكذا يُفرغك من الحماية الوحيدة التي عندك.</p>
+        </div>
+        <div class="step-card" style="border-color:var(--danger-light);">
+          <span class="step-badge badge-d">✗ تجنب</span>
+          <h3>لا تعيد تعريف "الطارئ"</h3>
+          <p>السفر، الملابس، ترقية الجوال — ليست طوارئ. حدّد تعريفاً واضحاً مسبقاً: "ما يهدد مأوايَ أو صحتي أو قدرتي على العمل."</p>
+        </div>
+      </div>
+
+      <p style="margin-top:24px; font-size:0.82rem; color:var(--subtle);">
+        <strong>المصادر:</strong> Federal Reserve Survey of Household Economics (SHED) 2024 · Bankrate Emergency Savings Report 2026 · Vanguard Research "Emergency Savings and Financial Well-Being" April 2025 · Workings.me "Average Emergency Fund Statistics 2024" · St. Louis Fed Page One Economics 2025 · BLS Unemployment Duration Statistics 2025
+      </p>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <div class="container">
+      <h2>مستعد للخطة الكاملة؟</h2>
+      <p>خطة الـ30 يوم تشمل مرحلة مخصصة لبناء الصندوق — خطوة بخطوة.</p>
+      <a href="plan.html" class="btn-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        ابدأ خطة الـ30 يوم
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand"><div class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><span class="logo-wordmark">نجاة</span></div><p>دليل عربي عملي لإدارة الأزمات المالية</p></div>
+      <div class="footer-col"><h4>الخطة</h4><a href="plan.html">خطة الـ30 يوم</a><a href="debts.html">إدارة الديون</a><a href="emergency-fund.html">صندوق الطوارئ</a></div>
+      <div class="footer-col"><h4>المدونة</h4><a href="blog/first-72-hours.html">الـ72 ساعة الأولى</a><a href="blog/index.html">كل المقالات</a></div>
+      <div class="footer-col"><h4>الموارد</h4><a href="resources.html">مساعدات ودعم</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2024 نجاة.</span><span>Federal Reserve · Vanguard · Bankrate</span></div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function calcFund() {
+      const vals = [1,2,3,4,5,6].map(i => parseFloat(document.getElementById('f'+i).value) || 0);
+      const total = vals.reduce((a,b) => a+b, 0);
+      const fmt = n => n.toLocaleString('ar-EG', {maximumFractionDigits:0});
+      document.getElementById('monthly').textContent = fmt(total);
+      document.getElementById('oneMonth').textContent = fmt(total);
+      document.getElementById('threeMonths').textContent = fmt(total * 3);
+    }
+  </script>
+</body>
+</html>

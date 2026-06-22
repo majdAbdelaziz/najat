@@ -1,9 +1,401 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>خطة الـ30 يوم | نجاة</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"></head><body>
-<nav class="nav" id="nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><span class="logo-wordmark">نجاة</span></a><div class="nav-links"><a href="plan.html" class="nav-link">خطة الـ30 يوم</a><a href="debts.html" class="nav-link">إدارة الديون</a><a href="blog/index.html" class="nav-link">المدونة</a><a href="resources.html" class="nav-link">الموارد</a><a href="plan.html" class="btn btn-primary btn-sm">ابدأ الخطة</a></div><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobileMenu"><a href="plan.html">خطة الـ30 يوم</a><a href="blog/index.html">المدونة</a></div></nav>
-<div class="page-hero"><span class="eyebrow">نجاة</span><h1>خطة الـ30 يوم</h1><p>خطوة واضحة كل يوم من الأزمة للاستقرار</p></div>
-<section class="section"><div class="container" style="text-align:center; padding:40px 24px;">
-<p style="font-size:1rem; color:var(--muted); max-width:500px; margin:0 auto 24px; line-height:1.8;">هذه الصفحة قيد الإعداد وستُطلق قريباً بمحتوى كامل ومفصّل.</p>
-<a href="plan.html" class="btn btn-primary">ابدأ خطة الـ30 يوم الآن</a>
-</div></section>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><div class="nav-logo"><div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><span class="logo-wordmark">نجاة</span></div><p>دليل عربي عملي لإدارة الأزمات المالية</p></div><div class="footer-col"><h4>الخطة</h4><a href="plan.html">خطة الـ30 يوم</a><a href="debts.html">إدارة الديون</a></div><div class="footer-col"><h4>المدونة</h4><a href="blog/index.html">كل المقالات</a></div><div class="footer-col"><h4>الموارد</h4><a href="resources.html">مساعدات ودعم</a></div></div><div class="footer-bottom"><span>© 2024 نجاة.</span></div></footer>
-<script src="js/main.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خطة الـ30 يوم | نجاة — دليل الأزمة المالية</title>
+  <meta name="description" content="خطة عملية أسبوعية للأيام الـ30 الأولى بعد فقدان الدخل. من تثبيت الأساسيات في الأسبوع الأول، إلى بناء الاستقرار في اليوم الثلاثين — مدعومة بمنهجية Wells Fargo وEd Jones وAAA.">
+  <meta name="keywords" content="خطة الأزمة المالية, 30 يوم بعد فقدان العمل, خطة مالية طارئة">
+  <link rel="canonical" href="https://najat.github.io/plan.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "خطة الـ30 يوم للتعافي من الأزمة المالية",
+    "description": "خطة عملية أسبوعية لإدارة الأزمة المالية بعد فقدان الدخل",
+    "totalTime": "P30D",
+    "inLanguage": "ar"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Plan-specific styles */
+    .week-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+    .week-tab {
+      padding: 9px 20px; border-radius: 24px; font-size: 0.87rem; font-weight: 600;
+      cursor: pointer; border: 1.5px solid var(--border-m); background: var(--bg2);
+      color: var(--muted); transition: all 0.18s; font-family: var(--font);
+    }
+    .week-tab.active { background: var(--g600); color: #fff; border-color: var(--g600); }
+    .week-tab:hover:not(.active) { border-color: var(--g400); color: var(--g600); }
+
+    .week-panel { display: none; }
+    .week-panel.active { display: block; }
+
+    .day-list { display: flex; flex-direction: column; gap: 12px; }
+    .day-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--bg); border: 1px solid var(--border-m); border-radius: var(--r);
+      padding: 16px 18px; transition: all 0.18s; cursor: pointer;
+    }
+    .day-item:hover { border-color: var(--g200); background: var(--bg2); }
+    .day-item.done { border-color: var(--g100); background: var(--g50); }
+    .day-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--g50);
+      color: var(--g800); font-size: 0.78rem; font-weight: 700; display: flex;
+      align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .day-item.done .day-num { background: var(--g600); color: #fff; }
+    .day-content h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .day-item.done .day-content h3 { color: var(--g800); text-decoration: line-through; opacity: 0.7; }
+    .day-content p { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
+    .day-priority { font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; display: inline-block; margin-top: 5px; }
+    .pri-red { background: var(--danger-light); color: var(--danger); }
+    .pri-amber { background: var(--warn-light); color: var(--warn); }
+    .pri-green { background: var(--g50); color: var(--g800); }
+    .pri-blue { background: var(--info-light); color: var(--info); }
+
+    .progress-wrap { margin-bottom: 40px; }
+    .prog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .prog-title { font-size: 0.87rem; font-weight: 700; color: var(--text); }
+    .prog-pct { font-size: 0.87rem; font-weight: 700; color: var(--g600); }
+    .prog-bar-bg { height: 8px; background: var(--border); border-radius: 8px; overflow: hidden; }
+    .prog-bar-fill { height: 8px; background: var(--g600); border-radius: 8px; transition: width 0.5s ease; }
+
+    .week-summary {
+      background: var(--g900); border-radius: var(--rl); padding: 24px;
+      margin-bottom: 28px; color: rgba(255,255,255,0.9);
+    }
+    .week-summary h2 { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .week-summary p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+    .week-goal { background: rgba(255,255,255,0.07); border-radius: 8px; padding: 12px 16px; margin-top: 14px; font-size: 0.84rem; color: var(--g200); }
+    .week-goal strong { color: #fff; }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div>
+        <span class="logo-wordmark">نجاة</span>
+      </a>
+      <div class="nav-links">
+        <a href="plan.html" class="nav-link active">خطة الـ30 يوم</a>
+        <a href="debts.html" class="nav-link">إدارة الديون</a>
+        <a href="emergency-fund.html" class="nav-link">صندوق الطوارئ</a>
+        <a href="blog/index.html" class="nav-link">المدونة</a>
+        <a href="resources.html" class="nav-link">الموارد</a>
+        <a href="plan.html" class="btn btn-primary btn-sm">ابدأ الخطة</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="plan.html">خطة الـ30 يوم</a>
+      <a href="debts.html">إدارة الديون</a>
+      <a href="blog/index.html">المدونة</a>
+      <a href="resources.html">الموارد</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <span class="eyebrow">الخطة</span>
+    <h1>خطة الـ30 يوم</h1>
+    <p>خطوة واضحة كل يوم — من تثبيت الأساسيات في اليوم الأول إلى بناء الاستقرار في اليوم الثلاثين</p>
+  </div>
+
+  <main>
+  <section class="section">
+    <div class="container">
+
+      <!-- PROGRESS -->
+      <div class="progress-wrap">
+        <div class="prog-header">
+          <span class="prog-title">تقدمك في الخطة</span>
+          <span class="prog-pct" id="progressPct">0%</span>
+        </div>
+        <div class="prog-bar-bg">
+          <div class="prog-bar-fill" id="progressBar" style="width:0%"></div>
+        </div>
+        <p style="font-size:0.8rem; color:var(--subtle); margin-top:6px;"><span id="doneCount">0</span> من 20 مهمة مكتملة — انقر على أي مهمة لتحديدها كمكتملة</p>
+      </div>
+
+      <!-- WEEK TABS -->
+      <div class="week-tabs" role="tablist">
+        <button class="week-tab active" onclick="showWeek(1)" id="tab1">الأسبوع الأول — الاستقرار الحاد</button>
+        <button class="week-tab" onclick="showWeek(2)" id="tab2">الأسبوع الثاني — التنظيم</button>
+        <button class="week-tab" onclick="showWeek(3)" id="tab3">الأسبوع الثالث — التفاوض</button>
+        <button class="week-tab" onclick="showWeek(4)" id="tab4">الأسبوع الرابع — البناء</button>
+      </div>
+
+      <!-- WEEK 1 -->
+      <div class="week-panel active" id="week1">
+        <div class="week-summary">
+          <h2>الأسبوع الأول: الاستقرار الحاد (أيام 1-7)</h2>
+          <p>هدف هذا الأسبوع الوحيد: تثبيت الأساسيات الأربعة وفهم وضعك المالي الحقيقي. لا قرارات كبيرة، لا تغييرات جذرية — فقط معلومات وتثبيت.</p>
+          <div class="week-goal"><strong>المعيار:</strong> نهاية الأسبوع الأول تعرف تحديداً: كم معك، كم نفقاتك الأساسية، ومتى تستحق ديونك.</div>
+        </div>
+        <div class="day-list">
+          <div class="day-item" onclick="toggleDay(this)" data-id="d1">
+            <div class="day-num">1</div>
+            <div class="day-content">
+              <h3>احسب ما عندك الآن — كل شيء</h3>
+              <p>نقداً، في الحسابات، أي مدخرات. هذا ليس لإرهاقك — بل لتعرف "مدى صلاحية وضعك" وكم أشهر لديك قبل نفاد كل شيء. وفق Wells Fargo: معظم الناس لا يعرفون رصيدهم الحقيقي حتى يكتبوه.</p>
+              <span class="day-priority pri-red">أولوية قصوى</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d2">
+            <div class="day-num">2</div>
+            <div class="day-content">
+              <h3>اكتب كل نفقاتك الشهرية بالتفصيل</h3>
+              <p>إيجار، كهرباء، طعام، قسط سيارة، اشتراكات — كل شيء. صنّفها: أساسي (الجدران الأربعة) أو ثانوي. النتيجة: رقمان واضحان — أقل ما تحتاج للعيش + ما تنفقه حالياً.</p>
+              <span class="day-priority pri-red">أولوية قصوى</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d3">
+            <div class="day-num">3</div>
+            <div class="day-content">
+              <h3>اقطع النفقات الثانوية كلها فوراً</h3>
+              <p>Netflix، Spotify، اشتراكات الصالة، توصيلات الطعام — أوقفهم اليوم. وفق National Debt Relief: هذه الخطوة وحدها توفر 150-400$ شهرياً في المتوسط. أنت في وضع بقاء، لا وضع راحة.</p>
+              <span class="day-priority pri-red">أولوية قصوى</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d4">
+            <div class="day-num">4</div>
+            <div class="day-content">
+              <h3>اكتب قائمة ديونك كاملة بالتفاصيل</h3>
+              <p>لكل دين: المبلغ الكلي، الدفعة الشهرية، معدل الفائدة، تاريخ الاستحقاق القادم. هذه قائمة المعارك — لا تستطيع أن تضع استراتيجية بدونها. وفق Federal Reserve NY: الديون الأمريكية وصلت 17.9 تريليون دولار بسبب غياب هذا الوضوح.</p>
+              <span class="day-priority pri-amber">مهم جداً</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d5">
+            <div class="day-num">5</div>
+            <div class="day-content">
+              <h3>تواصل مع مزودي الخدمات (كهرباء، مياه) قبل أن يتصلوا بك</h3>
+              <p>اطلب برنامج الصعوبات (Hardship Program) مباشرة. معظم شركات الخدمات لديه لكن لا تُعلن عنه. الاتصال المبكر يمنحك خيارات أكثر وفترة أطول — بعد التأخر تضيق خياراتك بشكل ملحوظ.</p>
+              <span class="day-priority pri-amber">مهم جداً</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d6">
+            <div class="day-num">6</div>
+            <div class="day-content">
+              <h3>تواصل مع المالك أو بنك الرهن العقاري</h3>
+              <p>الملّاك الأفراد عادةً أكثر مرونة من شركات إدارة العقارات. كن صريحاً، اقترح خطة دفع، وثّق الاتفاق. وفق Edward Jones: "استدعاء الرحمة قبل التأخر أفضل بكثير من الانتظار حتى يصبح التأخر حقيقة."</p>
+              <span class="day-priority pri-amber">مهم جداً</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d7">
+            <div class="day-num">7</div>
+            <div class="day-content">
+              <h3>راجع وضعك في نهاية الأسبوع الأول</h3>
+              <p>سؤالان فقط: هل الجدران الأربعة مؤمّنة لهذا الشهر؟ هل تعرف تحديداً متى ينفد المال؟ إذا لا لأي منهما — هذا هو تركيزك الوحيد حتى يصبح الجواب نعم.</p>
+              <span class="day-priority pri-green">مراجعة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 2 -->
+      <div class="week-panel" id="week2">
+        <div class="week-summary">
+          <h2>الأسبوع الثاني: التنظيم والأولويات (أيام 8-14)</h2>
+          <p>الأزمة الحادة خفّت قليلاً. الآن وقت بناء نظام واضح لإدارة ما تبقى من مال، ووضع أولويات للديون.</p>
+          <div class="week-goal"><strong>المعيار:</strong> نهاية الأسبوع الثاني عندك ميزانية شهرية واقعية وخطة واضحة لأي دين يُدفع أولاً.</div>
+        </div>
+        <div class="day-list">
+          <div class="day-item" onclick="toggleDay(this)" data-id="d8">
+            <div class="day-num">8</div>
+            <div class="day-content">
+              <h3>أنشئ ميزانية الأزمة الشهرية</h3>
+              <p>ليست ميزانيتك القديمة المعدّلة — بل ميزانية جديدة تبدأ من الصفر. الجدران الأربعة أولاً، ثم الديون الأساسية بالحد الأدنى، ثم أي شيء آخر. وفق AAA Financial: الميزانية المكتوبة تقلل الإنفاق الخاطئ 23% في المتوسط.</p>
+              <span class="day-priority pri-amber">مهم جداً</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d9">
+            <div class="day-num">9</div>
+            <div class="day-content">
+              <h3>رتّب ديونك بطريقة "كرة الثلج" أو "الانهيار الجليدي"</h3>
+              <p>كرة الثلج: ابدأ بأصغر دين. الانهيار الجليدي: ابدأ بالأعلى فائدة. الأول أفضل نفسياً، الثاني أوفر مالياً. الاختيار يعتمد على شخصيتك — لكن البحث يُظهر أن الأهم هو البدء بأي منهما.</p>
+              <span class="day-priority pri-amber">مهم جداً</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d10">
+            <div class="day-num">10</div>
+            <div class="day-content">
+              <h3>ابحث عن مصادر دخل إضافية سريعة</h3>
+              <p>عمل حر، خدمات للجيران، بيع أغراض غير مستخدمة، مساعدة أفراد العائلة. وفق AAA: نحو 20% من البالغين يقومون بعمل مؤقت (Gig Work) خلال فترات البطالة لسد الفجوة. كل دولار إضافي يمدّد مدواك.</p>
+              <span class="day-priority pri-green">فرصة</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d11">
+            <div class="day-num">11</div>
+            <div class="day-content">
+              <h3>ابحث عن موارد دعم مجتمعي وحكومي</h3>
+              <p>برامج دعم الإيجار، الطعام، الخدمات — موجودة في معظم الدول لكن كثيرين لا يعرفون عنها أو يترددون في طلبها. هذا ليس ضعفاً — بل استخدام ذكي لموارد موجودة لمن في وضعك تحديداً. راجع صفحة الموارد.</p>
+              <span class="day-priority pri-green">فرصة</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d12">
+            <div class="day-num">12</div>
+            <div class="day-content">
+              <h3>أنشئ نظاماً للتتبع اليومي للإنفاق</h3>
+              <p>لا تحتاج لتطبيق معقد — ورقة أو ملاحظات الهاتف تكفي. اكتب كل ما تنفقه يومياً. الهدف: الوعي الكامل بكل ريال. وفق National Debt Relief: التتبع اليومي يكشف عادةً نفقات خفية بمعدل 15-20% من الإنفاق الكلي.</p>
+              <span class="day-priority pri-green">عادة جيدة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 3 -->
+      <div class="week-panel" id="week3">
+        <div class="week-summary">
+          <h2>الأسبوع الثالث: التفاوض والبحث عن الدخل (أيام 15-21)</h2>
+          <p>الآن وقت التواصل النشط مع الدائنين والبحث الممنهج عن دخل جديد أو مؤقت.</p>
+          <div class="week-goal"><strong>المعيار:</strong> على الأقل تفاوضت مع دائن واحد وبدأت بحثاً منظماً عن دخل.</div>
+        </div>
+        <div class="day-list">
+          <div class="day-item" onclick="toggleDay(this)" data-id="d13">
+            <div class="day-num">15</div>
+            <div class="day-content">
+              <h3>تواصل مع أكبر دائنيك واطلب برنامج الصعوبات</h3>
+              <p>استخدم النص الجاهز من مقالنا "كيف تتفاوض مع الدائنين". وفق ASAP Credit Repair: 70% من المتصلين المبكرين يحصلون على نوع من التخفيف. كن محدداً في طلبك واحفظ كل شيء كتابياً.</p>
+              <span class="day-priority pri-amber">مهم جداً</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d14">
+            <div class="day-num">17</div>
+            <div class="day-content">
+              <h3>ابدأ البحث المنظم عن عمل أو دخل</h3>
+              <p>وفق Scale Jobs: ركّز على منصة واحدة للبحث لمدة 30 يوماً بدل التشتت. أرسل 20-30 طلباً أسبوعياً مع تتبع نتائجها. التشبيك (Networking) يُلغي 60-80% من الوظائف قبل إعلانها — لا تهمله.</p>
+              <span class="day-priority pri-amber">مهم جداً</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d15">
+            <div class="day-num">19</div>
+            <div class="day-content">
+              <h3>راجع خطة الديون بعد التفاوض</h3>
+              <p>بعد الحصول على أي تخفيف، أعد حساب ميزانيتك. كم وُفّر؟ هل تستطيع الآن تخصيص مبلغ صغير لصندوق الطوارئ؟ حتى 50$ شهرياً يبني حاجزاً نفسياً وعملياً مهماً.</p>
+              <span class="day-priority pri-green">مراجعة</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d16">
+            <div class="day-num">21</div>
+            <div class="day-content">
+              <h3>مراجعة منتصف الخطة</h3>
+              <p>ثلاثة أسئلة: هل الجدران الأربعة مؤمّنة للشهر القادم؟ هل لديك خطة ديون واضحة؟ هل بدأت البحث عن دخل؟ نعم للثلاثة = أنت في المسار الصحيح. لا لأي منها = اعرف لماذا وعدّل.</p>
+              <span class="day-priority pri-blue">مراجعة إلزامية</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 4 -->
+      <div class="week-panel" id="week4">
+        <div class="week-summary">
+          <h2>الأسبوع الرابع: البناء والتثبيت (أيام 22-30)</h2>
+          <p>إذا وصلت للأسبوع الرابع مع الجدران الأربعة مؤمّنة — أنت في وضع أفضل مما كنت عليه. الآن ابنِ عادات تبقى معك.</p>
+          <div class="week-goal"><strong>المعيار:</strong> اليوم الثلاثون تعرف وضعك بدقة، عندك خطة للشهر القادم، وبدأت بناء حاجز مالي ولو صغير.</div>
+        </div>
+        <div class="day-list">
+          <div class="day-item" onclick="toggleDay(this)" data-id="d17">
+            <div class="day-num">22</div>
+            <div class="day-content">
+              <h3>ابدأ بناء صندوق طوارئ صغير</h3>
+              <p>حتى 50-100$ شهرياً في حساب منفصل. وفق Vanguard 2025: وجود أي صندوق طوارئ يحسّن جودة القرارات المالية ويقلل الضغط النفسي بشكل قابل للقياس — حتى المبالغ الصغيرة لها أثر.</p>
+              <span class="day-priority pri-green">بناء مستقبل</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d18">
+            <div class="day-num">25</div>
+            <div class="day-content">
+              <h3>راجع تقدمك في البحث عن دخل وعدّل الاستراتيجية</h3>
+              <p>وفق Scale Jobs: إذا لم تحصل على ردود في 30 يوماً، المشكلة عادة في ملف السيرة الذاتية أو عدم ملاءمة الوظيفة — لا في عدد الطلبات. غيّر النهج بدل مضاعفة نفس الجهد.</p>
+              <span class="day-priority pri-green">تقييم</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d19">
+            <div class="day-num">28</div>
+            <div class="day-content">
+              <h3>خطط لشهر قادم مالياً</h3>
+              <p>ميزانية الشهر القادم بناءً على ما تعلمته. أي ديون ستدفعها أولاً؟ أي نفقات يمكن تخفيضها أكثر؟ هل تتوقع دخلاً إضافياً؟ التخطيط الشهري المكتوب يختلف تماماً عن التمني.</p>
+              <span class="day-priority pri-blue">تخطيط</span>
+            </div>
+          </div>
+          <div class="day-item" onclick="toggleDay(this)" data-id="d20">
+            <div class="day-num">30</div>
+            <div class="day-content">
+              <h3>يوم الـ30: مراجعة شاملة ووضع هدف الشهر القادم</h3>
+              <p>قارن وضعك اليوم بوضعك يوم واحد: ما الذي تغيّر؟ ما الذي ثبّت؟ ما الذي تعلمته؟ حدد هدفاً واحداً واضحاً للشهر القادم — رقم محدد، تاريخ محدد، خطوة واضحة. الغموض عدو التقدم.</p>
+              <span class="day-priority pri-blue">إنجاز</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOURCES NOTE -->
+      <div style="margin-top:48px; padding-top:24px; border-top:1px solid var(--border); font-size:0.82rem; color:var(--subtle);">
+        <strong>مستند على منهجيات:</strong> Wells Fargo Financial Planning for Job Loss · AAA Financial Planning · Edward Jones Financial Checklist After Job Loss · Scale Jobs 90-Day Recovery Plan · National Debt Relief · Vanguard Emergency Savings Research
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="container">
+      <h2>انتهت الخطة؟ الخطوة التالية</h2>
+      <p>بعد تثبيت الأساسيات تعلّم كيف تتعامل مع ديونك بذكاء وتبني حمايتك المالية للمستقبل.</p>
+      <a href="debts.html" class="btn-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        إدارة الديون بذكاء
+      </a>
+    </div>
+  </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#E1F5EE" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div>
+          <span class="logo-wordmark">نجاة</span>
+        </div>
+        <p>دليل عربي عملي لإدارة الأزمات المالية الشخصية</p>
+      </div>
+      <div class="footer-col"><h4>الخطة</h4><a href="plan.html">خطة الـ30 يوم</a><a href="debts.html">إدارة الديون</a><a href="emergency-fund.html">صندوق الطوارئ</a></div>
+      <div class="footer-col"><h4>المدونة</h4><a href="blog/first-72-hours.html">الـ72 ساعة الأولى</a><a href="blog/index.html">كل المقالات</a></div>
+      <div class="footer-col"><h4>الموارد</h4><a href="resources.html">مساعدات ودعم</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 نجاة.</span>
+      <span>Wells Fargo · Edward Jones · AAA · Vanguard</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function showWeek(n) {
+      document.querySelectorAll('.week-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.week-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('week' + n).classList.add('active');
+      document.getElementById('tab' + n).classList.add('active');
+    }
+
+    function toggleDay(el) {
+      el.classList.toggle('done');
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const done = document.querySelectorAll('.day-item.done').length;
+      const total = document.querySelectorAll('.day-item').length;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById('progressPct').textContent = pct + '%';
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById('doneCount').textContent = done;
+    }
+  </script>
+</body>
+</html>
