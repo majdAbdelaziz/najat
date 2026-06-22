@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://najat.github.io/sitemap.xml
